@@ -1,4 +1,4 @@
-import java.util.*;;
+import java.util.*;
 public class SimpleInterestCalculator {
     public static double simpleInterest(double principal, double rate, double time) {
         return (principal*rate*time)/100;
@@ -13,6 +13,6 @@ public class SimpleInterestCalculator {
         System.out.println("Enter time period");
         double time=sc.nextDouble();
         double interest = simpleInterest(principal, rate, time);
-        System.out.printf("Simple interest is:%.2f",interest);
+        System.out.printf("The Simple interest is %.2f for Principal %.2f, Rate of Interest %.2f and Time %.2f",interest,principal,rate,time);
     }
 }
