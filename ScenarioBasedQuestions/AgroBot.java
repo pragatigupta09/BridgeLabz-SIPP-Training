@@ -1,66 +1,63 @@
-package ScenarioBasedQuestions;
+import java.util.Scanner;
+
+abstract class IrrigationUnit {
+    protected String location;
+
+    IrrigationUnit(String location) {
+        this.location = location;
+    }
+
+    abstract void startWatering();
+}
+
 interface SensorReadable {
     void readSensorData();
 }
 
-class IrrigationUnit {
-    private int calibrationLevel;
-
-    public IrrigationUnit(int calibrationLevel) {
-        this.calibrationLevel = calibrationLevel;
-    }
-
-    protected void calibrate() {
-        System.out.println("Calibrating system at level: " + calibrationLevel);
-    }
-
-    public void startWatering() {
-        System.out.println("Starting generic watering...");
-    }
-}
-
 class Sprinkler extends IrrigationUnit implements SensorReadable {
-    public Sprinkler(int calibrationLevel) {
-        super(calibrationLevel);
-    }
-
-    @Override
-    public void startWatering() {
-        calibrate();
-        System.out.println("Sprinkler is watering the field.");
+    Sprinkler(String location) {
+        super(location);
     }
 
     public void readSensorData() {
-        System.out.println("Sprinkler sensor: moisture = 45%");
+        System.out.println("Sprinkler sensor: Soil moisture = 40%");
+    }
+
+    public void startWatering() {
+        System.out.println("Sprinkler watering at " + location);
     }
 }
 
 class DripSystem extends IrrigationUnit implements SensorReadable {
-    public DripSystem(int calibrationLevel) {
-        super(calibrationLevel);
-    }
-
-    @Override
-    public void startWatering() {
-        calibrate();
-        System.out.println("DripSystem is watering the field.");
+    DripSystem(String location) {
+        super(location);
     }
 
     public void readSensorData() {
-        System.out.println("DripSystem sensor: moisture = 38%");
+        System.out.println("DripSystem sensor: Soil moisture = 30%");
+    }
+
+    public void startWatering() {
+        System.out.println("Drip irrigation started at " + location);
     }
 }
 
 public class AgroBot {
     public static void main(String[] args) {
-        Sprinkler s = new Sprinkler(3);
-        DripSystem d = new DripSystem(2);
+        Scanner sc = new Scanner(System.in);
+        System.out.print("Enter field location: ");
+        String location = sc.nextLine();
+        System.out.print("Choose unit (1: Sprinkler, 2: DripSystem): ");
+        int choice = sc.nextInt();
 
-        s.readSensorData();
-        s.startWatering();
+        IrrigationUnit unit;
+        if (choice == 1) {
+            unit = new Sprinkler(location);
+        } else {
+            unit = new DripSystem(location);
+        }
 
-        d.readSensorData();
-        d.startWatering();
+        ((SensorReadable) unit).readSensorData();
+        unit.startWatering();
     }
 }
-
