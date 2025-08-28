@@ -1,0 +1,34 @@
+class Course
+    private title
+    private duration
+    private price
+    constructor(title, duration, price)
+    getters
+
+class Student
+    private name
+    private email
+    private enrolledCourses = List<Course>
+    constructor(name, email)
+    method enrollCourse(course)
+        if course not in enrolledCourses
+            add course
+    method viewEnrolledCourses()
+        for each course in enrolledCourses
+            print course.title, course.duration, course.price
+
+main
+    course1 = new Course("Java Programming Basics", "6 weeks", 4999)
+    course2 = new Course("Data Structures in Java", "8 weeks", 5999)
+    course3 = new Course("Spring Boot for Web Development", "10 weeks", 6999)
+
+    student1 = new Student("Arya", "arya@gmail.com")
+    student1.enrollCourse(course1)
+    student1.enrollCourse(course2)
+
+    student2 = new Student("Priya", "priya@gmail.com")
+    student2.enrollCourse(course3)
+    student2.enrollCourse(course1)
+
+    student1.viewEnrolledCourses()
+    student2.viewEnrolledCourses()

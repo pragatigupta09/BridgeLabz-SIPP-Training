@@ -1,0 +1,37 @@
+class Student
+    name
+    marks
+    constructor(name, marks)
+
+function mergeSort(arr)
+    if arr.length <= 1
+        return arr
+    mid = arr.length / 2
+    left = mergeSort(arr[0..mid])
+    right = mergeSort(arr[mid+1..end])
+    return merge(left, right)
+
+function merge(left, right)
+    result = []
+    while left and right not empty
+        if left[0].marks > right[0].marks
+            add left[0] to result
+            remove left[0]
+        else if left[0].marks < right[0].marks
+            add right[0] to result
+            remove right[0]
+        else
+            if left[0].name < right[0].name
+                add left[0] to result
+                remove left[0]
+            else
+                add right[0] to result
+                remove right[0]
+    add remaining elements
+    return result
+
+main
+    students = [("Arya",92),("Bhavna",92),("Kiran",85),("Diya",78),("Chanchal",92)]
+    sortedList = mergeSort(students)
+    for s in sortedList
+        print s.name, s.marks

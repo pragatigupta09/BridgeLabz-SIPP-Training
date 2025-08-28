@@ -1,0 +1,23 @@
+class Room
+    protected roomNumber
+    protected customerName
+    protected daysStayed
+    constructor(roomNumber, customerName, daysStayed)
+    method calculateBill()
+
+class DeluxeRoom extends Room
+    private rate = 3000
+    method calculateBill()
+        return daysStayed * rate
+
+class SuiteRoom extends Room
+    private rate = 5000
+    method calculateBill()
+        return daysStayed * rate
+
+main
+    r1 = new DeluxeRoom(101, "Riya", 3)
+    print "Total Bill:", r1.calculateBill()
+
+    r2 = new SuiteRoom(102, "Anita", 2)
+    print "Total Bill:", r2.calculateBill()

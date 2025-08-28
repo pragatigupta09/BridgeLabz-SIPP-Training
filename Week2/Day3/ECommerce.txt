@@ -1,0 +1,24 @@
+function binarySearch(arr, target)
+    low = 0
+    high = arr.length - 1
+    while low <= high
+        mid = (low + high) / 2
+        if arr[mid] == target
+            return true
+        else if arr[mid] < target
+            low = mid + 1
+        else
+            high = mid - 1
+    return false
+
+main
+    catalog = ["AirPods", "Backpack", "Camera", "Laptop", "Shoes", "Smartphone", "Watch"]
+    if binarySearch(catalog, "Laptop")
+        print "Laptop available"
+    else
+        print "Not available"
+
+    if binarySearch(catalog, "Headphones")
+        print "Headphones available"
+    else
+        print "Not available"

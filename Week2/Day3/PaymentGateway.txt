@@ -1,0 +1,36 @@
+class Transaction<T>
+    private paymentDetails
+    constructor(paymentDetails)
+    method processPayment()
+        print based on type of paymentDetails
+    method getTransactionDetails()
+        return paymentDetails
+
+class UPI
+    upiId
+    amount
+    merchantName
+    constructor(upiId, amount, merchantName)
+
+class Card
+    cardNumber
+    cvv
+    expiryDate
+    amount
+    constructor(cardNumber, cvv, expiryDate, amount)
+
+class NetBanking
+    bankName
+    accountNumber
+    amount
+    constructor(bankName, accountNumber, amount)
+
+main
+    t1 = new Transaction(new UPI("ramesh@upi", 1200, "Amazon"))
+    t1.processPayment()
+
+    t2 = new Transaction(new Card("1234-5678-9876-5432","123","12/27",5000))
+    t2.processPayment()
+
+    t3 = new Transaction(new NetBanking("HDFC","00112233",8000))
+    t3.processPayment()
